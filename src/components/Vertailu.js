@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Liittyma from './Liittyma'
+import Saastolaskuri from './Saastolaskuri'
 
 const Vertailu = () => {
     const [nykyinen, setNykyinen] = useState({
@@ -24,62 +25,33 @@ const Vertailu = () => {
         tarjous: 19.90
     })
 
-    const [edut, setEdut] = useState({        
-        puhe: false,
-        viestit: false,
-        netti: false,
-        rajaton: false,
-        hinta: false,
-        tarjous: false
-    })
+    const [edut, setEdut] = useState({})
+    const dummyEdut = {puhe:false,viestit:false,netti:false,rajaton:false,hinta:false,tarjous:false}
 
     const vertailu = () =>{
-
-        if(puheJaViestiVertailu(nykyinen.puhe, uusi.puhe)){
-            setEdut({puhe: true}) 
-            console.log('true');
-            console.log(edut.puhe);
-        
-        } else{
-            setEdut({puhe: false})
-  
+        const newEdut = {
+            puhe: puheJaViestiVertailu(nykyinen.puhe, uusi.puhe),
+            viestit: puheJaViestiVertailu(nykyinen.viestit, uusi.viestit),
+            netti: nettiVertailu(nykyinen.netti, uusi.netti),
+            rajaton: rajatonVertailu(nykyinen.rajaton, uusi.rajaton),
+            hinta: hintaVertailu(nykyinen.hinta, uusi.hinta),
+            tarjous: hintaVertailu(nykyinen.tarjous, uusi.tarjous)
         }
-        if(puheJaViestiVertailu(nykyinen.viestit, uusi.viestit)){
-            setEdut({viestit: true})
-        } else {
-            setEdut({viestit: false})
-        }
-        if(nettiVertailu(nykyinen.netti, uusi.netti)){
-            setEdut({netti: true})
-        } else {
-            setEdut({netti: false})
-        }
-        if(rajatonVertailu(nykyinen.rajaton, uusi.rajaton)){
-            setEdut({rajaton:true})
-        } else {
-            setEdut({rajaton:false})
-        }
-        if(hintaVertailu(nykyinen.hinta, uusi.hinta)){
-            setEdut({hinta:true})
-        } else {
-            setEdut({hinta:false})
-        }
-        if(hintaVertailu(nykyinen.tarjous, uusi.tarjous)){
-            setEdut({tarjous:true})
-        } else {
-            setEdut({tarjous:false})
-        }
-        console.log(edut);
+        setEdut(newEdut)
 }
 
-useEffect(vertailu, [])
+useEffect(vertailu, [uusi])
 
 
     return (
-        <div className='container'>
-            <Liittyma status='Nykyinen' liittyma={nykyinen}/>
-            <Liittyma status='Uusi' liittyma={uusi}/>
-        </div>
+        <>
+            <div className='container'>
+                <Liittyma status='Nykyinen' liittyma={nykyinen} edut={dummyEdut}/>
+                <Liittyma status='Uusi' liittyma={uusi} edut={edut}/>  
+                <Saastolaskuri vanhaHinta={nykyinen.tarjous} uusiHinta={uusi.tarjous}/>              
+            </div>
+            
+        </>
     )
 }
 
@@ -103,7 +75,7 @@ const nettiVertailu = (vanha,uusi) => {
 }
 
 const rajatonVertailu = (vanha, uusi) => {
-    if(typeof(uusi) === 'string' && typeof(vanha) !== 'string'){
+    if(uusi){
         return true
     }
     return false
