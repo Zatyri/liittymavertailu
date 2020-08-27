@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Liittyma from './Liittyma'
 import Saastolaskuri from './Saastolaskuri'
 
-const Vertailu = () => {
+const Vertailu = ({liittymat}) => {
     const [nykyinen, setNykyinen] = useState({
         operaattori: "TestiOperaattor1",
         nimi: "test1",
@@ -12,7 +12,6 @@ const Vertailu = () => {
         rajaton: false,
         hinta: 29.90,
         tarjous: 21.90
-
     })
     const [uusi, setUusi] = useState({
         operaattori: "TestiOperaattori2",

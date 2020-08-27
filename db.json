@@ -1,0 +1,58 @@
+{
+    "liittymat": [
+        {
+            "operaattori": "Telia",
+            "nimi": "Rajaton 150",
+            "puhe": "Rajaton",
+            "viestit": "Rajaton",
+            "netti": 150,
+            "rajaton": "Rajaton",
+            "listahinta": 29.90
+        },
+        {
+            "operaattori": "Telia",
+            "nimi": "Puhe 100",
+            "puhe": 500,
+            "viestit": 500,
+            "netti": 100,
+            "rajaton": "Rajaton",
+            "listahinta": 24.90
+        },
+        {
+            "operaattori": "Elisa",
+            "nimi": "Huoleton 100",
+            "puhe": "Rajaton",
+            "viestit": "Rajaton",
+            "netti": 100,
+            "rajaton": "Rajaton",
+            "listahinta": 29.90
+        },
+        {
+            "operaattori": "Elisa",
+            "nimi": "Puhe 10",
+            "puhe": 0.7,
+            "viestit": 0.7,
+            "netti": 100,
+            "rajaton": "Rajaton",
+            "listahinta": 19.90
+        },
+        {
+            "operaattori": "DNA",
+            "nimi": "Nopea 4G Rajaton Plus",
+            "puhe": "Rajaton",
+            "viestit": "Rajaton",
+            "netti": 150,
+            "rajaton": "Rajaton",
+            "listahinta": 34.90
+        },
+        {
+            "operaattori": "DNA",
+            "nimi": "Puhe",
+            "puhe": "Rajaton",
+            "viestit": "Rajaton",
+            "netti": 10,
+            "rajaton": "Rajaton",
+            "listahinta": 24.90
+        }
+    ]
+}
