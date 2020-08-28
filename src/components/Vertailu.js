@@ -4,24 +4,24 @@ import Saastolaskuri from './Saastolaskuri'
 
 const Vertailu = ({liittymat}) => {
     const [nykyinen, setNykyinen] = useState({
-        operaattori: "TestiOperaattor1",
-        nimi: "test1",
-        puhe: 5000,
-        viestit: "Rajaton",
-        netti: 150,
+        operaattori: "Valitse operaattori",
+        nimi: "Valitse liittymätyyppi",
+        puhe: "",
+        viestit: "",
+        netti: "",
         rajaton: false,
-        hinta: 29.90,
-        tarjous: 21.90
+        hinta: "",
+        tarjous: ""
     })
     const [uusi, setUusi] = useState({
-        operaattori: "TestiOperaattori2",
-        nimi: "test2",
-        puhe: "Rajaton",
-        viestit: "Rajaton",
-        netti: 200,
-        rajaton: true,
-        hinta: 29.90,
-        tarjous: 19.90
+        operaattori: "Valitse operaattori",
+        nimi: "Valitse liittymätyyppi",
+        puhe: "",
+        viestit: "",
+        netti: "",
+        rajaton: false,
+        hinta: "",
+        tarjous: ""
     })
 
     const [edut, setEdut] = useState({})
@@ -41,12 +41,36 @@ const Vertailu = ({liittymat}) => {
 
 useEffect(vertailu, [uusi])
 
+const handleLiittymavalitsin = (liittyma, tila) => {  
+    const valittuLiittyma = JSON.parse(liittyma)
+    valittuLiittyma.tarjous = valittuLiittyma.hinta
+    if(tila === "Nykyinen"){
+        setNykyinen(valittuLiittyma)
+    } else if( tila === "Uusi"){
+        setUusi(valittuLiittyma)
+    }
+}
+
+const setOffer = (tila, value) => {
+    const uusiTarjous = {...nykyinen} 
+    uusiTarjous.tarjous = value
+    if(tila === "Nykyinen"){
+        const uusiTarjous = {...nykyinen} 
+        uusiTarjous.tarjous = value
+        setNykyinen(uusiTarjous)
+    } else if( tila === "Uusi"){
+        const uusiTarjous = {...uusi} 
+        uusiTarjous.tarjous = value
+        setUusi(uusiTarjous)
+    }
+}
+
 
     return (
         <>
             <div className='container'>
-                <Liittyma status='Nykyinen' liittyma={nykyinen} edut={dummyEdut}/>
-                <Liittyma status='Uusi' liittyma={uusi} edut={edut}/>  
+                <Liittyma status='Nykyinen' liittymat={liittymat} liittyma={nykyinen} edut={dummyEdut} valitsin={handleLiittymavalitsin} setOffer={setOffer}/>
+                <Liittyma status='Uusi' liittymat={liittymat} liittyma={uusi} edut={edut} valitsin={handleLiittymavalitsin} setOffer={setOffer}/>  
                 <Saastolaskuri vanhaHinta={nykyinen.tarjous} uusiHinta={uusi.tarjous}/>              
             </div>
             

@@ -5,7 +5,7 @@ import Liittymaservice from '../utility/server'
 
 const Ohjelma = () => {
 
-    const [liittymat, setLiittymat] = useState(null)
+    const [liittymat, setLiittymat] = useState([])
 
 useEffect( () => {
     Liittymaservice.getAll()

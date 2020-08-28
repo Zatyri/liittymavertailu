@@ -7,7 +7,7 @@
             "viestit": "Rajaton",
             "netti": 150,
             "rajaton": "Rajaton",
-            "listahinta": 29.90
+            "hinta": 29.90
         },
         {
             "operaattori": "Telia",
@@ -16,7 +16,7 @@
             "viestit": 500,
             "netti": 100,
             "rajaton": "Rajaton",
-            "listahinta": 24.90
+            "hinta": 24.90
         },
         {
             "operaattori": "Elisa",
@@ -25,7 +25,7 @@
             "viestit": "Rajaton",
             "netti": 100,
             "rajaton": "Rajaton",
-            "listahinta": 29.90
+            "hinta": 29.90
         },
         {
             "operaattori": "Elisa",
@@ -34,7 +34,7 @@
             "viestit": 0.7,
             "netti": 100,
             "rajaton": "Rajaton",
-            "listahinta": 19.90
+            "hinta": 19.90
         },
         {
             "operaattori": "DNA",
@@ -43,7 +43,7 @@
             "viestit": "Rajaton",
             "netti": 150,
             "rajaton": "Rajaton",
-            "listahinta": 34.90
+            "hinta": 34.90
         },
         {
             "operaattori": "DNA",
@@ -52,7 +52,7 @@
             "viestit": "Rajaton",
             "netti": 10,
             "rajaton": "Rajaton",
-            "listahinta": 24.90
+            "hinta": 24.90
         }
     ]
 }
