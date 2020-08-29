@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Liittyma from './Liittyma'
 import Saastolaskuri from './Saastolaskuri'
 import Ostoskori from './Ostoskori'
+import IsoOstoskori from './IsoOstoskori'
 
 const Vertailu = ({liittymat}) => {
 
@@ -99,6 +100,7 @@ const Vertailu = ({liittymat}) => {
                 <Liittyma status='Uusi' liittymat={liittymat} liittyma={uusi} edut={edut} valitsin={handleLiittymavalitsin} setOffer={setOffer} annaAlennus={annaAlennus} alennus={alennus}/>  
                 <Saastolaskuri vanhaHinta={nykyinen.tarjous} uusiHinta={uusi.tarjous} lisaaKoriin={kokonaisSaasto}/>              
                 <Ostoskori kokonaisSaasto={saasto}/>
+                <IsoOstoskori kori={saasto}/>
             </div>
             
         </>
