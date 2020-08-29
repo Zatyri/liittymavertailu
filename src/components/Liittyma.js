@@ -1,10 +1,14 @@
 import React from 'react'
 import Valitsin from './Valitsin'
 
-const Liittyma = ({status, liittymat, liittyma, edut, valitsin, setOffer}) => { 
+const Liittyma = ({status, liittymat, liittyma, edut, valitsin, setOffer, annaAlennus, alennus}) => { 
     
     const handleOfferChange = (event) => {
         setOffer(status, event.target.value)
+    }
+
+    const handleAlennus = (event) => {
+        annaAlennus(parseInt(event.target.value))
     }
 
     return (
@@ -18,6 +22,7 @@ const Liittyma = ({status, liittymat, liittyma, edut, valitsin, setOffer}) => {
                 <p className={edut.rajaton?'highlight':''}>Rajaton netti: {liittyma.rajaton?'Kyllä':'ei'}</p>
                 <p className={edut.hinta?'highlight':''}>Listahinta (kk): {liittyma.hinta}</p>
                 <p className={edut.tarjous?'highlight':''} >Tarjoushinta (kk):<input type="number" value= {liittyma.tarjous} onChange={handleOfferChange}></input></p>
+                {status === "Uusi"?<p>Alennus: <input type="number" value={alennus} onChange={handleAlennus}></input></p>:undefined}
             </ul>
         </>
     )
