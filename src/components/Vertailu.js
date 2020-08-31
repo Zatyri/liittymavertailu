@@ -34,6 +34,7 @@ const Vertailu = ({liittymat}) => {
     const [edut, setEdut] = useState({})
     const dummyEdut = {puhe:false,viestit:false,netti:false,rajaton:false,hinta:false,tarjous:false}
     const [saasto, setSaasto] = useState([false])
+    const [naytaKori, setNaytaKori] = useState(false)
     
 
     const vertailu = () =>{
@@ -92,17 +93,26 @@ const Vertailu = ({liittymat}) => {
         setAlennus(alennus)
     }
 
+    const handleNaytaKori = () => naytaKori?setNaytaKori(false):setNaytaKori(true)
+     
+
+    const defaultView = () => (
+        <div className='container'>
+        <Liittyma status='Nykyinen' liittymat={liittymat} liittyma={nykyinen} edut={dummyEdut} valitsin={handleLiittymavalitsin} setOffer={setOffer}/>
+        <Liittyma status='Uusi' liittymat={liittymat} liittyma={uusi} edut={edut} valitsin={handleLiittymavalitsin} setOffer={setOffer} annaAlennus={annaAlennus} alennus={alennus}/>  
+        <Saastolaskuri vanhaHinta={nykyinen.tarjous} uusiHinta={uusi.tarjous} lisaaKoriin={kokonaisSaasto}/>              
+        <Ostoskori kokonaisSaasto={saasto} naytaKori={handleNaytaKori}/>
+    </div>
+    )
+
+    const viewKori = () => (
+        <IsoOstoskori kori={saasto} naytaKori={handleNaytaKori}/>
+    )
+
 
     return (
         <>
-            <div className='container'>
-                <Liittyma status='Nykyinen' liittymat={liittymat} liittyma={nykyinen} edut={dummyEdut} valitsin={handleLiittymavalitsin} setOffer={setOffer}/>
-                <Liittyma status='Uusi' liittymat={liittymat} liittyma={uusi} edut={edut} valitsin={handleLiittymavalitsin} setOffer={setOffer} annaAlennus={annaAlennus} alennus={alennus}/>  
-                <Saastolaskuri vanhaHinta={nykyinen.tarjous} uusiHinta={uusi.tarjous} lisaaKoriin={kokonaisSaasto}/>              
-                <Ostoskori kokonaisSaasto={saasto}/>
-                <IsoOstoskori kori={saasto}/>
-            </div>
-            
+            {naytaKori?viewKori():defaultView()}
         </>
     )
 }

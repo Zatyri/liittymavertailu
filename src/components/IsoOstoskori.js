@@ -1,6 +1,6 @@
 import React from 'react'
 
-const IsoOstoskori = ({kori}) => {
+const IsoOstoskori = ({kori, naytaKori}) => {
 
     const showKori = kori.map(liittyma =>    
         <tr>
@@ -8,13 +8,13 @@ const IsoOstoskori = ({kori}) => {
             <td>{liittyma.saasto}</td>
             <td>{liittyma.saasto?liittyma.saasto * 12:null}</td>
             <td>{liittyma.alennus}</td>
+            <td><button>-</button></td>
         </tr>
     )
 
     const saastoKK = kori.map(liittyma => liittyma.saasto).reduce((sum, current) => sum + current)
     const alennukset = kori.map(liittyma => liittyma.alennus).reduce((sum, current) => sum + current)
     
-
     return (
         <div>
             <table>
@@ -35,6 +35,7 @@ const IsoOstoskori = ({kori}) => {
                     </tr>
                 </tbody>
             </table>
+            <button onClick={naytaKori}>Piilota kori</button>
         </div>
     )
 }
