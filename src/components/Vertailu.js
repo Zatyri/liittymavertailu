@@ -16,6 +16,7 @@ const Vertailu = ({liittymat}) => {
         viestit: "",
         netti: "",
         rajaton: false,
+        eu: "",
         hinta: "",
         tarjous: ""
     })
@@ -26,6 +27,7 @@ const Vertailu = ({liittymat}) => {
         viestit: "",
         netti: "",
         rajaton: false,
+        eu: "",
         hinta: "",
         tarjous: "",
         alennus: ""
