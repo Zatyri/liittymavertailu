@@ -18,7 +18,8 @@ const Vertailu = ({liittymat}) => {
         rajaton: false,
         eu: "",
         hinta: "",
-        tarjous: ""
+        tarjous: "",
+        id: ""
     })
     const [uusi, setUusi] = useState({
         operaattori: "Valitse operaattori",
@@ -30,7 +31,8 @@ const Vertailu = ({liittymat}) => {
         eu: "",
         hinta: "",
         tarjous: "",
-        alennus: ""
+        alennus: "",
+        id: ""
     })
     const [alennus, setAlennus] = useState("")
     const [edut, setEdut] = useState({})
@@ -81,11 +83,15 @@ const Vertailu = ({liittymat}) => {
         if(nykyinen.operaattori === "Valitse operaattori" || uusi.operaattori === "Valitse operaattori"){
             return null
         }
+        const id = () => {
+            return `_${Math.random().toString(36).substr(2, 9)}`
+        }
         const uusiKori = [{
             operaattori: uusi.operaattori,
             nimi: uusi.nimi,
             saasto: parseInt(event.target.value),
-            alennus: alennus
+            alennus: alennus,
+            id: id()
         }]
 
         saasto[0]?setSaasto(saasto.concat(uusiKori)):setSaasto(uusiKori)
@@ -93,6 +99,15 @@ const Vertailu = ({liittymat}) => {
 
     const annaAlennus = (alennus) => { 
         setAlennus(alennus)
+    }
+
+    const handleRemoveLiittyma = (event) =>{
+        if(saasto.length === 1){
+            handleNaytaKori()
+        } else {
+            const kori = saasto.filter(toRemove => toRemove.id !== event.target.value)    
+            setSaasto(kori)
+        }
     }
 
     const handleNaytaKori = () => naytaKori?setNaytaKori(false):setNaytaKori(true)
@@ -108,7 +123,7 @@ const Vertailu = ({liittymat}) => {
     )
 
     const viewKori = () => (
-        <IsoOstoskori kori={saasto} naytaKori={handleNaytaKori}/>
+        <IsoOstoskori kori={saasto} naytaKori={handleNaytaKori} handleRemoveLiittyma={handleRemoveLiittyma}/>
     )
 
 

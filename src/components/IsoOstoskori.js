@@ -1,14 +1,15 @@
 import React from 'react'
 
-const IsoOstoskori = ({kori, naytaKori}) => {
+const IsoOstoskori = ({kori, naytaKori, handleRemoveLiittyma}) => {
 
-    const showKori = kori.map(liittyma =>    
-        <tr>
+    const showKori = kori.map(liittyma =>      
+          
+        <tr key={liittyma.id}>
             <td>{liittyma.operaattori} {liittyma.nimi}</td>
             <td>{liittyma.saasto}</td>
             <td>{liittyma.saasto?liittyma.saasto * 12:null}</td>
             <td>{liittyma.alennus}</td>
-            <td><button>-</button></td>
+            <td><button value={liittyma.id} onClick={handleRemoveLiittyma}>-</button><button>+</button></td>
         </tr>
     )
 

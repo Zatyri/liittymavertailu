@@ -1,13 +1,35 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles/App.css';
 import Ohjelma from './components/Ohjelma'
+import Login from './components/Login'
 
-function App() {
+const App = () =>  {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const login = () => {
+    if(!isLoggedIn){
+      setIsLoggedIn(true)
+    } else{
+      window.localStorage.removeItem('userLogin')
+      setIsLoggedIn(false)
+    }
+    
+  }
+
+  useEffect(() => {
+    const userLoggedIn = window.localStorage.getItem('userLogin')
+    if(userLoggedIn){
+      setIsLoggedIn(true)
+    }
+  }, [])
+ 
+
   return (
     <>
-      <Ohjelma />
+      {isLoggedIn?<Ohjelma login={login}/>:<Login login={login}/>}
     </>
-  );
+  )
 }
 
 export default App;

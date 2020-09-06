@@ -1,13 +1,28 @@
 import React, { useState } from 'react'
+import loginService from '../services/login'
 
-const Login = () => {
-    const [user, setUser] = useState("")
+
+const Login = ({login}) => {
+    const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleLogin = (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault()
-        
+        try {
+            const user = await loginService.login({ username, password })
+            setUserName(user)
+            window.localStorage.setItem(
+              'userLogin', JSON.stringify(user)
+            )
+            login()
+          } catch (ex) {
+            console.log(ex.message)  
+            setUserName('')
+            setPassword('')          
+          }
+          
     }
+    
 
     return (
         <>
@@ -15,14 +30,15 @@ const Login = () => {
             <form onSubmit={handleLogin}>
                 <div>
                     Käyttäjänimi
-                    <input type="text" value={user} onChange={({target})=> setUser(target.value)}>
+                    <input type="text" value={username} onChange={({target})=> setUserName(target.value)}>
                     </input>
                 </div>
                 <div>
                     Salasana
-                    <input type="text" value={password} onChange={({target})=> setPassword(target.value)}>
+                    <input type="password" value={password} onChange={({target})=> setPassword(target.value)}>
                     </input>
                 </div>
+                <button>Submit</button>
             </form>
             
         </>

@@ -19,17 +19,14 @@ const Valitsin = ({ liittymat, status, valitsin }) => {
     operaattorit = operaattorit.filter(distinct)
    
     const poulateOperaattori = operaattorit.map(operaattori =>       
-         <option key={operaattori} value={operaattori} >{operaattori}</option>)
+         <button key={operaattori} value={operaattori} onClick={handleOperaattoriSelect}>{operaattori}</button>)
     
     const populateLiittyma = liittymat.filter(liittyma => liittyma.operaattori === valittuOperaattori)
     
     
     return (
         <>
-            <select onChange={handleOperaattoriSelect}>
-                <option >Valitse operaattori</option>
-                {poulateOperaattori}
-            </select>
+        <div>{poulateOperaattori}</div>    
             <select onChange={handleLiittymaSelect}>
                 <option>Valitse liittymatyyppi</option>
                 {populateLiittyma.map(liittyma => <option key={liittyma.nimi} value={JSON.stringify(liittyma)}>{liittyma.nimi}</option>)}
