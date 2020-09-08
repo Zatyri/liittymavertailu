@@ -114,12 +114,18 @@ const Vertailu = ({liittymat}) => {
      
 
     const defaultView = () => (
-        <div className='container'>
-        <Liittyma status='Nykyinen' liittymat={liittymat} liittyma={nykyinen} edut={dummyEdut} valitsin={handleLiittymavalitsin} setOffer={setOffer}/>
-        <Liittyma status='Uusi' liittymat={liittymat} liittyma={uusi} edut={edut} valitsin={handleLiittymavalitsin} setOffer={setOffer} annaAlennus={annaAlennus} alennus={alennus}/>  
-        <Saastolaskuri vanhaHinta={nykyinen.tarjous} uusiHinta={uusi.tarjous} lisaaKoriin={kokonaisSaasto}/>              
-        <Ostoskori kokonaisSaasto={saasto} naytaKori={handleNaytaKori}/>
-    </div>
+        <>
+            <div className='container show_box'>
+                <div className='liittyma_display'>
+                    <Liittyma status='Nykyinen' liittymat={liittymat} liittyma={nykyinen} edut={dummyEdut} valitsin={handleLiittymavalitsin} setOffer={setOffer}/>
+                    <Liittyma status='Uusi' liittymat={liittymat} liittyma={uusi} edut={edut} valitsin={handleLiittymavalitsin} setOffer={setOffer} annaAlennus={annaAlennus} alennus={alennus}/>  
+                </div>
+                <div className='liittyma_display column'>
+                    <Saastolaskuri vanhaHinta={nykyinen.tarjous} uusiHinta={uusi.tarjous} lisaaKoriin={kokonaisSaasto}/>              
+                    <Ostoskori kokonaisSaasto={saasto} naytaKori={handleNaytaKori}/>
+                </div>
+            </div>
+        </>
     )
 
     const viewKori = () => (

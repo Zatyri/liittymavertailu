@@ -7,7 +7,7 @@ const Ostoskori = ({kokonaisSaasto, naytaKori}) => {
     const alennuksetYhteensa = alennus.reduce((sum, current) => sum + current)
 
     return (
-        <ul>
+        <ul className='item'>
             <h3>Kori</h3>
             {kokonaisSaasto[0]?<p>{kokonaisSaasto.length} {kokonaisSaasto.length === 1?"liittymä":"liittymää"}</p>:null}
             {kokonaisSaasto[0]?<p>{saastotYhteensa}€/kk ja {saastotYhteensa*12}€/vuosi</p>:<p>Kori on tyhjä</p>}
