@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/api/liittymat'
+const url = '/api/liittymat'
 const getAll = async() => {
     
     const request = await axios.get(url)

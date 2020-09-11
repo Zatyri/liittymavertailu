@@ -17,7 +17,7 @@ const IsoOstoskori = ({kori, naytaKori, handleRemoveLiittyma}) => {
     const alennukset = kori.map(liittyma => liittyma.alennus).reduce((sum, current) => sum + current)
     
     return (
-        <div>
+        <div className='liittyma_display'>
             <table>
                 <tbody>
                     <tr>
@@ -27,7 +27,7 @@ const IsoOstoskori = ({kori, naytaKori, handleRemoveLiittyma}) => {
                         <th>Alennus</th>
                     </tr>
                     {showKori}
-                    <tr>
+                    <tr className='lopputulos'>
                     <td>{kori[0]?kori.length:0} liittymää</td>
                     <td>{saastoKK}</td>
                     <td>{saastoKK?saastoKK*12:null}</td>
